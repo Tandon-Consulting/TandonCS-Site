@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tandon Consulting Services</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --bg-alt: #ffffff;
+      --surface: #ffffff;
+      --surface-soft: #eef2ff;
+      --border-subtle: #d4d7e5;
+      --border-strong: #b8c0dd;
+      --accent: #1363c6;   /* primary blue drawn from logo */
+      --accent-soft: #e0ecff;
+      --accent-strong: #0b4da1;
+      --accent-secondary: #0ea5e9; /* lighter cyan accent */
+      --text-main: #0f172a;
+      --text-muted: #4b5563;
+      --text-soft: #6b7280;
+      --radius-md: 0.75rem;
+      --radius-lg: 1.25rem;
+      --shadow-soft: 0 14px 40px rgba(15, 23, 42, 0.12);
+      --shadow-strong: 0 18px 50px rgba(15, 23, 42, 0.16);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #e0edff 0, #f5f7fb 45%, #edf2ff 85%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .shell {
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 3rem;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.9), transparent);
+      border-bottom: 1px solid rgba(212, 215, 229, 0.85);
+    }
+
+    .nav {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0.6rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+
+    .brand img {
+      height: 42px;
+      width: auto;
+      display: block;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .brand-text-main {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-strong);
+    }
+
+    .brand-text-sub {
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      font-size: 0.92rem;
+      color: var(--text-soft);
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 0.15rem;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(to right, var(--accent), var(--accent-secondary));
+      border-radius: 999px;
+      transition: width 0.18s ease-out;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      font-size: 0.85rem;
+      color: var(--accent-strong);
+      background: radial-gradient(circle at top left, #f0f7ff 0, #ffffff 60%);
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.14);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .nav-cta span {
+      font-size: 0.9rem;
+    }
+
+    .nav-cta:hover {
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .nav-cta:active {
+      transform: translateY(0);
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.16);
+    }
+
+    main {
+      padding-top: 2rem;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 2fr);
+      gap: 2.2rem;
+      align-items: center;
+      padding: 1.75rem 1.25rem 2.3rem;
+      border-radius: 1.5rem;
+      background: linear-gradient(to bottom right, #ffffff, #f1f5ff);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-strong);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: #f3f7ff;
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent-strong);
+      margin-bottom: 1.1rem;
+    }
+
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: linear-gradient(to bottom right, var(--accent), var(--accent-secondary));
+      box-shadow: 0 0 10px rgba(14, 165, 233, 0.7);
+    }
+
+    h1 {
+      font-size: clamp(2.3rem, 1.9rem + 1.5vw, 3.1rem);
+      letter-spacing: 0.02em;
+      margin-bottom: 0.75rem;
+      color: var(--accent-strong);
+    }
+
+    h1 span {
+      background: linear-gradient(to right, #0f172a, var(--accent), var(--accent-secondary));
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      color: var(--text-soft);
+      max-width: 34rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-stat {
+      padding: 0.9rem 0.95rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+      background: #ffffff;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hero-stat-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-soft);
+      margin-bottom: 0.45rem;
+    }
+
+    .hero-stat-value {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      align-items: center;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      border-radius: 999px;
+      padding: 0.7rem 1.25rem;
+      font-size: 0.92rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: transform 0.12s ease-out, box-shadow 0.12s ease-out, border-color 0.12s ease-out, background 0.12s ease-out;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+      color: #ffffff;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.2);
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.25);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+      box-shadow: 0 8px 22px rgba(15, 23, 42, 0.24);
+    }
+
+    .btn-secondary {
+      border-color: var(--border-subtle);
+      color: var(--accent-strong);
+      background: #ffffff;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      background: #f3f7ff;
+      transform: translateY(-1px);
+    }
+
+    .hero-secondary {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      padding: 1.25rem 1.4rem 1.4rem;
+      background: #ffffff;
+      box-shadow: var(--shadow-soft);
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .pill-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-soft);
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .tag {
+      font-size: 0.78rem;
+      padding: 0.3rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: #f9fbff;
+      color: var(--text-main);
+    }
+
+    .tag.highlight {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: var(--accent-strong);
+    }
+
+    .pill {
+      margin-top: 0.55rem;
+      border-radius: 999px;
+      padding: 0.5rem 0.75rem;
+      border: 1px solid var(--accent);
+      font-size: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--accent-strong);
+      background: #f3f7ff;
+    }
+
+    .pill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: linear-gradient(to bottom right, var(--accent), var(--accent-secondary));
+    }
+
+    section {
+      margin-top: 2.6rem;
+    }
+
+    .section-header {
+      margin-bottom: 1.5rem;
+    }
+
+    .section-kicker {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-soft);
+      margin-bottom: 0.35rem;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      margin-bottom: 0.35rem;
+      color: var(--accent-strong);
+    }
+
+    .section-intro {
+      color: var(--text-soft);
+      max-width: 46rem;
+      font-size: 0.98rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+
+    .card {
+      border-radius: var(--radius-md);
+      padding: 1.1rem 1.15rem 1.15rem;
+      border: 1px solid var(--border-subtle);
+      background: var(--surface);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .card h3 {
+      font-size: 1.02rem;
+      margin-bottom: 0.45rem;
+      color: var(--accent-strong);
+    }
+
+    .card p {
+      font-size: 0.92rem;
+      color: var(--text-soft);
+      margin-bottom: 0.6rem;
+    }
+
+    .pill-inline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+      color: var(--accent-strong);
+    }
+
+    .pill-inline span {
+      padding: 0.12rem 0.4rem;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: #f3f7ff;
+    }
+
+    .muted {
+      color: var(--text-soft);
+      font-size: 0.92rem;
+    }
+
+    .leaders {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.4rem;
+    }
+
+    .leader-card {
+      border-radius: 1rem;
+      border: 1px solid var(--border-subtle);
+      padding: 1.1rem 1.2rem 1.2rem;
+      background: var(--surface);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .leader-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .leader-name {
+      font-weight: 600;
+      color: var(--accent-strong);
+    }
+
+    .leader-role {
+      font-size: 0.86rem;
+      color: var(--text-soft);
+    }
+
+    .leader-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.55rem;
+      margin-top: 0.35rem;
+    }
+
+    .leader-badge {
+      font-size: 0.78rem;
+      padding: 0.22rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      color: var(--accent-strong);
+      background: #f1f5ff;
+    }
+
+    .leader-body {
+      font-size: 0.9rem;
+      color: var(--text-soft);
+      margin-bottom: 0.75rem;
+    }
+
+    .leader-list {
+      font-size: 0.88rem;
+      color: var(--text-main);
+    }
+
+    .leader-list strong {
+      font-weight: 600;
+    }
+
+    .leader-list span {
+      display: block;
+      margin-top: 0.15rem;
+      color: var(--text-soft);
+    }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+
+    .exp-card {
+      border-radius: 0.9rem;
+      border: 1px solid var(--border-subtle);
+      padding: 0.85rem 1rem 0.9rem;
+      background: var(--surface);
+      font-size: 0.88rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .exp-meta {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-soft);
+      margin-bottom: 0.25rem;
+    }
+
+    .exp-title {
+      font-weight: 600;
+      margin-bottom: 0.15rem;
+      color: var(--accent-strong);
+    }
+
+    .contact {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 2fr);
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .contact-card {
+      border-radius: 1.1rem;
+      border: 1px solid var(--border-subtle);
+      padding: 1.1rem 1.2rem 1.2rem;
+      background: var(--surface);
+      box-shadow: var(--shadow-soft);
+      font-size: 0.9rem;
+    }
+
+    .contact-row {
+      margin-bottom: 0.55rem;
+    }
+
+    .contact-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-soft);
+      margin-bottom: 0.12rem;
+    }
+
+    .contact-value {
+      font-size: 0.94rem;
+      color: var(--text-main);
+    }
+
+    .contact-links {
+      margin-top: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      font-size: 0.94rem;
+    }
+
+    .contact-links a {
+      color: var(--accent-strong);
+    }
+
+    footer {
+      margin-top: 3rem;
+      padding-top: 1.4rem;
+      border-top: 1px solid rgba(212, 215, 229, 0.85);
+      font-size: 0.8rem;
+      color: var(--text-soft);
+    }
+
+    footer .footer-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 960px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-secondary {
+        order: -1;
+      }
+
+      .grid-3,
+      .experience-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .contact {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .leaders {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .grid-3,
+      .experience-grid,
+      .grid-2 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero {
+        padding: 1.4rem 1.1rem 2rem;
+      }
+
+      .container {
+        padding-inline: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <nav class="nav">
+        <a href="#top" class="brand">
+          <!-- Logo: save your logo file as assets/tandoncs-logo.jpg in your repository -->
+          <img src="assets/tandoncs-logo.jpg" alt="Tandon Consulting Services logo" />
+          <span class="brand-text">
+            <span class="brand-text-main">TANDON CONSULTING</span>
+            <span class="brand-text-sub">Strategy to execution. Technology to value.</span>
+          </span>
+        </a>
+        <div class="nav-links">
+          <a href="#services">Services</a>
+          <a href="#expertise">Expertise</a>
+          <a href="#leaders">Leadership</a>
+          <a href="#experience">Track record</a>
+          <a href="#contact" class="nav-cta">Schedule a conversation<span>→</span></a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="top" class="container">
+      <section class="hero" aria-labelledby="hero-title">
+        <div>
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            <span>Strategy to execution. Technology to value.</span>
+          </div>
+          <h1 id="hero-title">Practical transformation for <span>revenue, delivery, and platforms</span></h1>
+          <p class="hero-subtitle">
+            Tandon Consulting Services helps SaaS, services, and data-driven businesses modernize quote-to-cash, ERP,
+            customer delivery, and engineering platforms while putting AI to work in everyday operations.
+          </p>
+
+          <div class="hero-grid">
+            <div class="hero-stat">
+              <p class="hero-stat-label">Transformation experience</p>
+              <p class="hero-stat-value">15+ years across SaaS, data, and services</p>
+            </div>
+            <div class="hero-stat">
+              <p class="hero-stat-label">Value delivered</p>
+              <p class="hero-stat-value">$22M+ cost savings and margin uplift</p>
+            </div>
+            <div class="hero-stat">
+              <p class="hero-stat-label">Scale proven</p>
+              <p class="hero-stat-value">1,100+ sites &amp; 1,700+ consultants supported</p>
+            </div>
+          </div>
+
+          <div class="hero-actions">
+            <a href="#contact" class="btn-primary">Discuss an initiative<span>→</span></a>
+            <a href="#expertise" class="btn-secondary">Explore capabilities</a>
+          </div>
+        </div>
+
+        <aside class="hero-secondary" aria-label="Snapshot of what we do">
+          <div>
+            <p class="pill-label">Where we focus</p>
+            <div class="tag-row" style="margin-top:0.45rem;margin-bottom:0.65rem;">
+              <span class="tag highlight">Business transformation</span>
+              <span class="tag">Enterprise applications</span>
+              <span class="tag">Data &amp; AI solutions</span>
+              <span class="tag">Operations excellence</span>
+              <span class="tag">Governance &amp; compliance</span>
+              <span class="tag">Advisory &amp; delivery leadership</span>
+            </div>
+          </div>
+          <div>
+            <p class="pill-label">Typical outcomes</p>
+            <p class="muted" style="margin-top:0.35rem;">
+              Faster revenue cycles, higher services margin, resilient platforms, and teams that know exactly how to run
+              the new operating model.
+            </p>
+            <div class="pill">
+              <span class="pill-dot"></span>
+              <span>From roadmap to running system, with guardrails, governance, and clear ownership built in.</span>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section id="services" aria-labelledby="services-title">
+        <div class="section-header">
+          <p class="section-kicker">How we help</p>
+          <h2 class="section-title" id="services-title">Services built around real transformation work</h2>
+          <p class="section-intro">
+            We work as hands-on partners – shaping strategy, designing operating models, and then leading the execution
+            across business, delivery, and engineering teams.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card">
+            <h3>Customer delivery &amp; operating model design</h3>
+            <p>
+              Redesign how services, field engineering, and customer success work together – from intake and scoping
+              through delivery governance, escalation paths, and reusable assets.
+            </p>
+            <p class="pill-inline"><span>Engagement models, playbooks, delivery KPIs</span></p>
+          </article>
+
+          <article class="card">
+            <h3>Quote-to-cash, CPQ, and ERP modernization</h3>
+            <p>
+              Align Salesforce, CPQ, billing, and ERP with the business you run today – with clear controls,
+              auditability, and faster deal velocity instead of swivel-chair workflows.
+            </p>
+            <p class="pill-inline"><span>Salesforce, Revenue Cloud, Certinia, Oracle Fusion, Workday, NetSuite</span></p>
+          </article>
+
+          <article class="card">
+            <h3>Finance &amp; revenue operations with AI</h3>
+            <p>
+              Apply predictive and generative AI to collections, working capital, forecasting, and approvals so teams
+              focus on decisions, not manual follow-up.
+            </p>
+            <p class="pill-inline"><span>DSO reduction, collections efficiency, write-off reduction</span></p>
+          </article>
+
+          <article class="card">
+            <h3>Product &amp; platform engineering leadership</h3>
+            <p>
+              Lead or coach engineering organizations through re-platforming, API strategy, observability, and DevOps –
+              without losing delivery reliability along the way.
+            </p>
+            <p class="pill-inline"><span>B2B2C portals, SaaS platforms, API-first architectures</span></p>
+          </article>
+
+          <article class="card">
+            <h3>AI-first delivery and software development</h3>
+            <p>
+              Introduce AI-assisted workflows into project delivery and software development life cycles – from agent
+              farms and copilots to AI-augmented SDLC and testing.
+            </p>
+            <p class="pill-inline"><span>Agentic AI, RPA, AI-assisted SDLC, GenAI chatbots</span></p>
+          </article>
+
+          <article class="card">
+            <h3>Interim leadership &amp; advisory</h3>
+            <p>
+              Step in as fractional VP or executive advisor for transformation, engineering, or delivery while you hire
+              – keeping roadmaps, teams, and partners moving.
+            </p>
+            <p class="pill-inline"><span>VP Customer Delivery, VP Engineering, Transformation Office</span></p>
+          </article>
+        </div>
+      </section>
+
+      <section id="expertise" aria-labelledby="expertise-title">
+        <div class="section-header">
+          <p class="section-kicker">What we bring</p>
+          <h2 class="section-title" id="expertise-title">Depth across business systems, data, and software</h2>
+          <p class="section-intro">
+            Our work sits at the intersection of commercial strategy, operations, and engineering. That means we can
+            translate executive intent into roadmaps, architectures, and day‑to‑day practices that actually stick.
+          </p>
+        </div>
+
+        <div class="grid-2" style="margin-bottom:1.4rem;">
+          <article class="card">
+            <h3>Business applications &amp; revenue platforms</h3>
+            <p>
+              Design and lead integrated ecosystems across Salesforce, CPQ, ERP, billing, and data platforms so finance,
+              sales, and delivery teams see the same truth and move faster together.
+            </p>
+            <p class="muted">
+              Hands-on experience with Salesforce Sales, Service &amp; Revenue Cloud, Certinia, Conga, Oracle Fusion,
+              Workday Financials and HCM, NetSuite, MS Dynamics, ServiceNow, and subscription revenue models.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Engineering leadership &amp; SaaS platforms</h3>
+            <p>
+              Build and evolve SaaS products, B2B2C portals, and large-scale platforms with microservices, APIs,
+              observability, and modern DevOps – while keeping reliability and customer experience front and center.
+            </p>
+            <p class="muted">
+              Experience spans travel &amp; hospitality, childcare/education platforms, API management, and high‑scale
+              website builders across .NET, Java, JavaScript, Node.js, React, Angular, Kubernetes, and major clouds.
+            </p>
+          </article>
+        </div>
+
+        <div class="grid-2">
+          <article class="card">
+            <h3>Data, analytics, and AI</h3>
+            <p>
+              Treat data and AI as part of the operating model, not side projects – from data governance and observability
+              through predictive models, GenAI assistants, and executive dashboards.
+            </p>
+            <p class="muted">
+              Background in Snowflake, Looker, Power BI, Azure Data Lake, enterprise data lakes, predictive and
+              generative AI, NLP, time‑series forecasting, and agentic AI.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Governance, controls, and change</h3>
+            <p>
+              Pair modernization with solid governance – including contract controls, revenue recognition, SOX‑ready
+              processes, and change management that brings stakeholders along instead of surprising them.
+            </p>
+            <p class="muted">
+              Experience leading data governance, contract recalibration at scale, audit‑ready revenue processes, and
+              large‑scale change across finance, operations, and go‑to‑market teams.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="leaders" aria-labelledby="leaders-title">
+        <div class="section-header">
+          <p class="section-kicker">Leadership</p>
+          <h2 class="section-title" id="leaders-title">Hands-on executives, not career consultants</h2>
+          <p class="section-intro">
+            Tandon Consulting Services is led by practitioners who have owned P&amp;L, transformation charters, engineering
+            roadmaps, and delivery organizations – and who still enjoy being close to the work.
+          </p>
+        </div>
+
+        <div class="leaders">
+          <article class="leader-card" aria-label="Profile of Stan Tandon">
+            <div class="leader-header">
+              <div>
+                <p class="leader-name">Stan Tandon</p>
+                <p class="leader-role">Principal Consultant – Customer Delivery, Revenue, &amp; Enterprise Systems</p>
+              </div>
+              <div class="leader-badge">Phoenix / Scottsdale</div>
+            </div>
+
+            <p class="leader-body">
+              Stan is a VP‑level leader in customer delivery, finance, and digital transformation with more than fifteen
+              years of experience scaling quote‑to‑cash, ERP, and enterprise delivery organizations in SaaS, data, and
+              financial operations.
+              He combines executive‑level stewardship of delivery P&amp;L and services margin with hands‑on design of
+              operating models, governance, and AI‑enabled workflows.
+            </p>
+
+            <div class="leader-badges">
+              <span class="leader-badge">Quote‑to‑cash &amp; revenue platforms</span>
+              <span class="leader-badge">AI‑first delivery architecture</span>
+              <span class="leader-badge">Data governance &amp; analytics</span>
+              <span class="leader-badge">Partner‑led services models</span>
+            </div>
+
+            <div class="leader-list">
+              <p><strong>Representative work</strong></p>
+              <span>
+                Leading AI and predictive AI adoption for a nationwide early childhood education provider across 1,100+
+                locations, building a governed backlog of 80+ AI agents and 10+ predictive finance use cases.
+              </span>
+              <span>
+                Owning a $14.5M lead‑to‑cash transformation and a $10.5M services transformation charter in a global
+                SaaS company, delivering $22M+ in cost savings through modernization and operating‑model redesign.
+              </span>
+              <span>
+                Implementing Salesforce CPQ, revenue, and ERP platforms that support more than 1,700 consultants and
+                complex subscription businesses.
+              </span>
+            </div>
+          </article>
+
+          <article class="leader-card" aria-label="Profile of Rumeli Tandon">
+            <div class="leader-header">
+              <div>
+                <p class="leader-name">Rumeli Tandon</p>
+                <p class="leader-role">Principal Consultant – Engineering, SaaS Platforms, &amp; Technology Strategy</p>
+              </div>
+              <div class="leader-badge">Phoenix / Scottsdale</div>
+            </div>
+
+            <p class="leader-body">
+              Rumeli is a seasoned technology executive and VP of Engineering who has led global teams building
+              B2B2C portals, API platforms, and large‑scale SaaS products in travel, hospitality, financial services,
+              and education.
+              She specializes in cloud‑native architectures, API strategy, observability, DevOps, and creating
+              high‑performance engineering cultures.
+            </p>
+
+            <div class="leader-badges">
+              <span class="leader-badge">B2B2C &amp; e‑commerce platforms</span>
+              <span class="leader-badge">Microservices &amp; APIs</span>
+              <span class="leader-badge">Cloud &amp; DevOps</span>
+              <span class="leader-badge">Engineering leadership &amp; culture</span>
+            </div>
+
+            <div class="leader-list">
+              <p><strong>Representative work</strong></p>
+              <span>
+                Leading engineering for new B2B2C portals and a modern education technology platform serving 300K+ users
+                in early childhood education, including security‑focused facial recognition solutions.
+              </span>
+              <span>
+                Serving as VP of Engineering for a global travel &amp; hospitality platform, re‑platforming legacy systems
+                to a modern SaaS architecture, improving search‑to‑book performance, and strengthening observability
+                and DevOps.
+              </span>
+              <span>
+                Guiding teams through API‑first and microservices journeys, open‑source contributions, and adoption of
+                test automation, CI/CD, and cloud infrastructure on AWS and Azure.
+              </span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="experience" aria-labelledby="experience-title">
+        <div class="section-header">
+          <p class="section-kicker">Track record</p>
+          <h2 class="section-title" id="experience-title">Examples of problems we have already solved</h2>
+          <p class="section-intro">
+            While every client is different, many of the patterns repeat. Here are some representative situations we have
+            helped organizations navigate.
+          </p>
+        </div>
+
+        <div class="experience-grid">
+          <article class="exp-card">
+            <p class="exp-meta">Education &amp; childcare</p>
+            <p class="exp-title">AI‑enabled finance and operations at national scale</p>
+            <p class="muted">
+              Defined and led AI adoption for a nationwide early childhood education provider with more than 1,100
+              locations, building a governed backlog of AI agents and predictive models for collections, DSO, and write‑off
+              reduction.
+            </p>
+          </article>
+
+          <article class="exp-card">
+            <p class="exp-meta">Enterprise SaaS</p>
+            <p class="exp-title">Lead‑to‑cash and services modernization</p>
+            <p class="muted">
+              Owned multi‑year transformations of lead‑to‑cash and services delivery, integrating Salesforce, CPQ,
+              Certinia, ERP, data lakes, and analytics to improve margin, deal velocity, and governance.
+            </p>
+          </article>
+
+          <article class="exp-card">
+            <p class="exp-meta">Travel &amp; hospitality</p>
+            <p class="exp-title">Modern B2B2C experience and API platform</p>
+            <p class="muted">
+              Led engineering for B2B2C travel experiences, building scalable APIs, reducing search‑to‑book latency,
+              re‑platforming legacy systems, and integrating CRM and booking engines into a single platform.
+            </p>
+          </article>
+
+          <article class="exp-card">
+            <p class="exp-meta">Healthcare &amp; data platforms</p>
+            <p class="exp-title">Data warehouses, health cloud, and deployment at scale</p>
+            <p class="muted">
+              Delivered next‑generation data warehouse and Salesforce‑based platforms across hundreds of clients and
+              complex healthcare use cases, with robust governance and rollout structures.
+            </p>
+          </article>
+
+          <article class="exp-card">
+            <p class="exp-meta">GenAI experiences</p>
+            <p class="exp-title">Customer service channels powered by GenAI</p>
+            <p class="muted">
+              Designed strategy and delivery approach for GenAI‑powered chatbots in healthcare, connecting natural
+              language interfaces with underlying systems and operational governance.
+            </p>
+          </article>
+
+          <article class="exp-card">
+            <p class="exp-meta">Web &amp; SaaS products</p>
+            <p class="exp-title">High‑scale consumer and agent portals</p>
+            <p class="muted">
+              Led the development of SaaS website builders, agent and consumer portals, and customer‑facing products
+              that serve millions of users with high availability and performance.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" aria-labelledby="contact-title">
+        <div class="section-header">
+          <p class="section-kicker">Start a conversation</p>
+          <h2 class="section-title" id="contact-title">Tell us what you are trying to move</h2>
+          <p class="section-intro">
+            A short working session is often the fastest way to understand whether we are the right fit. We typically
+            begin with a focused discussion on a specific initiative and share concrete next steps.
+          </p>
+        </div>
+
+        <div class="contact">
+          <div class="contact-card">
+            <div class="contact-row">
+              <p class="contact-label">How we typically engage</p>
+              <p class="contact-value">
+                We usually partner as an extension of your leadership team for a defined initiative, such as
+                re‑platforming quote‑to‑cash, standing up an AI program, or redesigning services delivery. We are happy
+                to co‑create the right engagement model with you.
+              </p>
+            </div>
+            <div class="contact-row">
+              <p class="contact-label">What to expect from an intro call</p>
+              <p class="contact-value">
+                We will spend most of the time understanding your goals, constraints, and current architecture. You will
+                leave with a clear view of how we would approach the work and where we believe we can add value.
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <div class="contact-row">
+              <p class="contact-label">Primary contact</p>
+              <div class="contact-links">
+                <span>Email: <a href="mailto:Stan.Tandon@TandonCS.com">Stan.Tandon@TandonCS.com</a></span>
+                <span>Phone: <a href="tel:+14692902807">(469) 290-2807</a></span>
+              </div>
+            </div>
+            <div class="contact-row">
+              <p class="contact-label">Location</p>
+              <p class="contact-value">Based in the Greater Phoenix / Scottsdale area and working with clients across North America.</p>
+            </div>
+            <div class="contact-row">
+              <p class="contact-label">Next step</p>
+              <p class="contact-value">Share a short description of your initiative, current systems, and timelines. We will respond with a proposed working session.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <div class="footer-line">
+          <span>© <span id="year"></span> Tandon Consulting Services. All rights reserved.</span>
+          <span>Strategy to execution. Technology to value.</span>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
